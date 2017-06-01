@@ -2,18 +2,41 @@ package dev.paie.entite;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.*;
+import javax.persistence.ManyToMany;
 
+@Entity
 public class ProfilRemuneration {
 
+	@Id
 	private Integer id;
 	private String code;
 
+	@ManyToMany
+	@JoinTable(name="cotisations_non_imposables_jointure",
+		joinColumns=
+			@JoinColumn(name="id_non_imp", referencedColumnName="id"),
+		inverseJoinColumns=
+			@JoinColumn(name="id_cotis", referencedColumnName="id"))
 	private List<Cotisation> cotisationsNonImposables;
 	
+	@ManyToMany
+	@JoinTable(name="cotisations_imposables_jointure",
+	joinColumns=
+		@JoinColumn(name="id_imp", referencedColumnName="id"),
+	inverseJoinColumns=
+		@JoinColumn(name="id_cotis", referencedColumnName="id"))
 	private List<Cotisation> cotisationsImposables;
 	
+	@ManyToMany
 	private List<Avantage> avantages;
 
+	public ProfilRemuneration() {
+		
+	}
+	
 	public Integer getId() {
 		return id;
 	}
