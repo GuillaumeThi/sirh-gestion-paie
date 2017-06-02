@@ -2,15 +2,13 @@ package dev.paie.entite;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.*;
-import javax.persistence.ManyToMany;
 
 @Entity
 public class ProfilRemuneration {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String code;
 
@@ -24,10 +22,10 @@ public class ProfilRemuneration {
 	
 	@ManyToMany
 	@JoinTable(name="cotisations_imposables_jointure",
-	joinColumns=
-		@JoinColumn(name="id_imp", referencedColumnName="id"),
-	inverseJoinColumns=
-		@JoinColumn(name="id_cotis", referencedColumnName="id"))
+		joinColumns=
+			@JoinColumn(name="id_imp", referencedColumnName="id"),
+		inverseJoinColumns=
+			@JoinColumn(name="id_cotis", referencedColumnName="id"))
 	private List<Cotisation> cotisationsImposables;
 	
 	@ManyToMany
