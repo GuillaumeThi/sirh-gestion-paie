@@ -16,7 +16,7 @@ import dev.paie.service.InitialiserDonneesService;
 @Configuration
 @EnableWebMvc
 @ComponentScan("dev.paie.web.controller")
-@Import({ ServicesConfig.class })
+@Import({ ServicesConfig.class, SecurityConfig.class })
 public class WebAppConfig {
 	
 	@Autowired InitialiserDonneesService init;

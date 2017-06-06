@@ -35,11 +35,13 @@ public class RemunerationEmployeController {
 	}
 	
 	@RequestMapping(value="/creer", method=RequestMethod.POST)
-    public String form(@RequestParam("matricule") String matricule,
-    				@RequestParam("grade") Integer gradeId,
-    				@RequestParam("entreprise") Integer entrepriseId,
-    				@RequestParam("profil") Integer profilId,
-    				Model model) {
+    public String form(
+    		@RequestParam("matricule") String matricule,
+    		@RequestParam("grade") Integer gradeId,
+    		@RequestParam("entreprise") Integer entrepriseId,
+    		@RequestParam("profil") Integer profilId,
+    		Model model
+    	) {
     
 		
 		RemunerationEmploye re = new RemunerationEmploye(matricule, entrepriseRepo.findOne(entrepriseId), profilRepo.findOne(profilId), gradeRepo.findOne(gradeId));
