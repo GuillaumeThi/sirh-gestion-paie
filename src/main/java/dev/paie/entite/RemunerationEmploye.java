@@ -1,5 +1,8 @@
 package dev.paie.entite;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +15,10 @@ public class RemunerationEmploye {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String matricule;
+	private String dateCreation;
+	
 	@ManyToOne
 	private Entreprise entreprise;
 	@ManyToOne
@@ -20,10 +26,23 @@ public class RemunerationEmploye {
 	@ManyToOne
 	private Grade grade;
 	
+	
 	public RemunerationEmploye() {
 		
 	}
 	
+	
+	public RemunerationEmploye(String matricule, Entreprise entreprise, ProfilRemuneration profilRemuneration,
+			Grade grade) {
+		super();
+		this.matricule = matricule;
+		this.entreprise = entreprise;
+		this.profilRemuneration = profilRemuneration;
+		this.grade = grade;
+	}
+
+
+
 	public String getMatricule() {
 		return matricule;
 	}
@@ -56,8 +75,19 @@ public class RemunerationEmploye {
 		this.id = id;
 	}
 	
-	
-	
+	public String getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation() {
+		this.dateCreation = dateToString();
+	}
+
+
+	public String dateToString() {
+		
+		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+	}
 	
 
 }

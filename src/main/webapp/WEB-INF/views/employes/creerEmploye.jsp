@@ -8,22 +8,29 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.css">
-<title>SGP - App</title>
+<title>SIRH</title>
 </head>
 
-<h1 style="text-align: center">Ajouter un employé</h1>
+<body>
 
-<br/>
-<br/>
+	<nav>
+		<a href="#">Employés</a>
+		<a href="#">Bulletins</a>
+	</nav>
+	
+	<h1 style="text-align: center">Ajouter un employé</h1>
+	
+	<br/>
+	<br/>
 
-	<form class="form-horizontal">
+	<form class="form-horizontal" method="post">
 	<fieldset>
 	
 	<!-- Text input-->
 	<div class="form-group">
-	  <label class="col-md-4 control-label" for="textinput">Matricule</label>  
+	  <label class="col-md-4 control-label" for="matricule">Matricule</label>  
 	  <div class="col-md-4">
-	  <input id="textinput" name="textinput" type="text" placeholder="matricule..." class="form-control input-md">
+	  <input id="matricule" name="matricule" type="text" placeholder="matricule..." class="form-control input-md">
 	    
 	  </div>
 	</div>
@@ -34,7 +41,7 @@
 	  <div class="col-md-4">
 	    <select id="entreprise" name="entreprise" class="form-control">
 	    	<c:forEach var="entreprise" items="${entreprises}">
-	      		<option value="${entreprise.denomination}">${entreprise.denomination}</option>
+	      		<option value="${entreprise.id}">${entreprise.denomination}</option>
 	      	</c:forEach>
 	    </select>
 	  </div>
@@ -46,7 +53,7 @@
 	  <div class="col-md-4">
 	    <select id="profil" name="profil" class="form-control">
 	      <c:forEach var="profil" items="${profils}">
-	      		<option value="${profil.code}">${profil.code}</option>
+	      		<option value="${profil.id}">${profil.code}</option>
 	      	</c:forEach>
 	    </select>
 	  </div>
@@ -58,7 +65,7 @@
 	  <div class="col-md-4">
 	    <select id="grade" name="grade" class="form-control">
 	      	<c:forEach var="grade" items="${grades}">
-	      		<option value="${grade.code}">${grade.code}</option>
+	      		<option value="${grade.id}">${grade.code}</option>
 	      	</c:forEach>
 	    </select>
 	  </div>
@@ -73,3 +80,6 @@
 	
 	</fieldset>
 	</form>
+	
+</body>
+</html>
